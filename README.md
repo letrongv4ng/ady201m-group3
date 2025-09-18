@@ -25,19 +25,6 @@
 
 EW: EasyWeather là một web app dự báo thời tiết 7 ngày sử dụng Open-Meteo API, thực hiện bởi nhóm 3 môn ADY201m do thầy Hùng-BK phụ trách.
 
-# Table of Contents
-- [Introduction](#introduction)
-- [Features](#feature)
-- [How to Run](#how-to-run)
-- [Quick Access](#quick-access)
-- [Project Structure](#-project-structure)
-- [Demo](#demo)
-- [Tech Stack](#techstack)
-- [Flow App](#flow-app)
-- [Limitations](#limitations)
-- [Authors](#authors)
-
-
 ## Feature
 - Tra cứu thời tiết sử dụng API thực của "Open-Meteo".
 - Dự báo theo biểu đồ 7 ngày tới.
@@ -56,7 +43,11 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 ## Quick access:
-https://ady201m-group3.streamlit.app/
+<p align="center">
+  <a href="https://ady201m-group3.streamlit.app/">
+    <img src="https://img.shields.io/badge/Open%20App-EasyWeather-brightgreen?style=for-the-badge&logo=streamlit" alt="EasyWeather App"/>
+  </a>
+</p>
 
  ## Project structure 
  ``` 
@@ -93,12 +84,9 @@ Biểu đồ dự báo của Hà Nội 7 ngày tới:
     - Tốc độ gió
 
 ## Limitations
-
-## Do giới hạn thời gian, ứng dụng mới chỉ có thể sử dụng vị trí thành phố mặc định, chưa hỗ trợ tra cứu thông tin trong quá khứ và so sánh giữa các địa điểm.
+- Do giới hạn thời gian, ứng dụng mới chỉ có thể sử dụng vị trí thành phố mặc định, chưa hỗ trợ tra cứu thông tin trong quá khứ và so sánh giữa các địa điểm.
 
 ## Authors:
-
-## LAB 02 - ADY201m
 - Lê Quang Hưng: MSSV: HE201273
 - Đinh Quang Minh: MSSV: HE201506
 - Đỗ Mạnh Chung: MSSV: HE201350
