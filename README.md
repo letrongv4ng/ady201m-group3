@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://share.streamlit.io/your-app-link">
+  <a href="https://ady201m-group3.streamlit.app/">
     <img src="https://img.shields.io/badge/Open%20App-EasyWeather-brightgreen?style=for-the-badge&logo=streamlit" 
          alt="Open App"
          style="transform: scale(1.5); margin-top: 15px;">
