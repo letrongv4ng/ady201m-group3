@@ -58,7 +58,7 @@ streamlit run app.py
 ```
 
 ## Demo
-**[Truy cập app online]**(https://ady201m-group3.streamlit.app/) để xem live demo app.
+**[Truy cập app online](https://ady201m-group3.streamlit.app/)** để xem live demo app.
 
 Biểu đồ dự báo của Hà Nội 7 ngày tới:
 <p align="center">
