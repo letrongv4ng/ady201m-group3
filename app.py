@@ -185,9 +185,15 @@ def create_line_chart(df, metrics):
 
     # Styling legend borders
     if len(df.columns) > 2:
-        legend = ax.legend(frameon=True, loc='upper left',
-                          fancybox=False, shadow=False,
-                          framealpha=1, edgecolor='black')
+        legend = ax.legend(
+            frameon=True,
+            loc='center left',
+            bbox_to_anchor=(1.02, 0.5),
+            fancybox=False,
+            shadow=False,
+            framealpha=1,
+            edgecolor='black'
+        )
         legend.get_frame().set_facecolor('white')
         legend.get_frame().set_linewidth(1)
 
@@ -197,6 +203,7 @@ def create_line_chart(df, metrics):
     plt.tight_layout()
 
     return fig
+
 # Main app
 def main():
     st.title("Lab 2&3 ")
