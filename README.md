@@ -1,8 +1,14 @@
-# Weather Forecast App  
+<!-- MANPAGE: BEGIN EXCLUDED SECTION -->  
+<div align = center>
 
-![Python](https://img.shields.io/badge/python-3.13-blue)  
-![Streamlit](https://img.shields.io/badge/Framework-Streamlit-orange)  
-![License](https://img.shields.io/badge/license-MIT-green)  
+[![EasyWeather](https://github.com/letrongv4ng/ady201m-group3/blob/main/assets/logo.png)](#readme)
+
+[![Python](https://img.shields.io/badge/python-3.13-blue)] 
+[![Streamlit](https://img.shields.io/badge/Framework-Streamlit-orange)]
+[![License](https://img.shields.io/badge/license-MIT-green)]
+
+</div>
+<!-- MANPAGE: BEGIN EXCLUDED SECTION -->
 
 
 # Introduction
