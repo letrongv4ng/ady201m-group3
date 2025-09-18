@@ -18,14 +18,12 @@ streamlit run app.py
 2. Quick access:
 https://ady201m-group3.streamlit.app/
 
-## Project structure:
-.
-|
-├── README.md   # mô tả dự án
-|
-├── app.py  # entry point chính
-|
-├── requirements.txt    # dependencies
+<pre> ## 🗂️ Project structure ``` . ├── README.md # mô tả dự án ├── app.py # entry point chính ├── requirements.txt # dependencies └── assets/ # ảnh demo ``` </pre>
+
+## 📊 Demo
+![Biểu đồ dự báo](<p align="center">
+  <img src="assets/chart.png" alt="Weather Chart Demo" width="500"/>
+</p>)
 
 
 ## Techstack:
