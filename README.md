@@ -1,4 +1,3 @@
-<!-- MANPAGE: BEGIN EXCLUDED SECTION -->
 <p align="center">
   <img src="assets/logo.png" alt="EasyWeather" width="150"/>
 </p>
@@ -7,7 +6,11 @@
   <img src="https://img.shields.io/badge/python-3.13-blue" alt="Python">
   <img src="https://img.shields.io/badge/Framework-Streamlit-orange" alt="Streamlit">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
-  <img src="https://img.shields.io/badge/Open%20App-EasyWeather-brightgreen?style=for-the-badge&logo=streamlit" 
+  <a href="https://ady201m-group3.streamlit.app/">
+    <img src="https://img.shields.io/badge/Open%20App-EasyWeather-brightgreen?style=for-the-badge&logo=streamlit" alt="Open App"/>
+  </a>
+</p>
+
 <p align="center">
   <a href="#introduction">Introduction</a> •
   <a href="#feature">Features</a> •
@@ -19,9 +22,6 @@
   <a href="#limitations">Limitations</a> •
   <a href="#authors">Authors</a>
 </p>
-
-</p>
-<!-- MANPAGE: BEGIN EXCLUDED SECTION -->
 
 EW: EasyWeather là một web app dự báo thời tiết 7 ngày sử dụng Open-Meteo API, thực hiện bởi nhóm 3 môn ADY201m do thầy Hùng-BK phụ trách.
 
