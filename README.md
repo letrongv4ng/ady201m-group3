@@ -44,13 +44,13 @@ https://ady201m-group3.streamlit.app/
     - Độ ẩm
     - Tốc độ gió
 
-## Limitation
+# Limitation
 
-# Do giới hạn thời gian, ứng dụng mới chỉ có thể sử dụng vị trí thành phố mặc định, chưa hỗ trợ tra cứu thông tin trong quá khứ và so sánh giữa các địa điểm.
+## Do giới hạn thời gian, ứng dụng mới chỉ có thể sử dụng vị trí thành phố mặc định, chưa hỗ trợ tra cứu thông tin trong quá khứ và so sánh giữa các địa điểm.
 
-## Authors:
+# Authors:
 
-# LAB 02 - ADY201m
+## LAB 02 - ADY201m
 - Lê Quang Hưng: MSSV: HE201273
 - Đinh Quang Minh: MSSV: HE201506
 - Đỗ Mạnh Chung: MSSV: HE201350
