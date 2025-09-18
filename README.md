@@ -1,3 +1,13 @@
+# Weather Forecast App  
+
+![Python](https://img.shields.io/badge/python-3.13-blue)  
+![Streamlit](https://img.shields.io/badge/Framework-Streamlit-orange)  
+![License](https://img.shields.io/badge/license-MIT-green)  
+
+
+# Introduction
+Web app dự báo thời tiết 7 ngày sử dụng Open-Meteo API, thực hiện bởi nhóm 3 môn ADY201m do thầy Hùng-BK phụ trách.
+
 ## Feature
 - Tra cứu thời tiết sử dụng API thực của "Open-Meteo".
 - Dự báo theo biểu đồ 7 ngày tới.
@@ -27,7 +37,7 @@ https://ady201m-group3.streamlit.app/
 ```
 
 ## Demo
-Biểu đồ dự báo của Hà Nội 7 ngày tới
+Biểu đồ dự báo của Hà Nội 7 ngày tới:
 <p align="center">
   <img src="assets/chart.png" alt="Weather Chart Demo" width="750"/>
 </p>
