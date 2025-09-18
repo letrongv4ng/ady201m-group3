@@ -20,11 +20,11 @@ https://ady201m-group3.streamlit.app/
 
 <pre> ## 🗂️ Project structure ``` . ├── README.md # mô tả dự án ├── app.py # entry point chính ├── requirements.txt # dependencies └── assets/ # ảnh demo ``` </pre>
 
-## 📊 Demo
-![Biểu đồ dự báo](<p align="center">
-  <img src="assets/chart.png" alt="Weather Chart Demo" width="500"/>
-</p>)
-
+## Demo
+Biểu đồ dự báo của Hà Nội 7 ngày tới
+<p align="center">
+  <img src="assets/chart.png" alt="Weather Chart Demo" width="750"/>
+</p>
 
 ## Techstack:
 - Python version: 3.13
