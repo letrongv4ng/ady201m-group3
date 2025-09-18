@@ -1,7 +1,8 @@
 import streamlit as st
 import requests
 import pandas as pd
-from matplotlib import pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
 
 # Page config
 st.set_page_config(
@@ -132,82 +133,95 @@ def process_weather_data(data, metrics):
     
     return df
 
-def create_line_chart(df, metrics):
+def create_interactive_chart(df, metrics):
+    """Create interactive plotly chart"""
     if df is None or df.empty:
         return None
 
-    fig, ax = plt.subplots(figsize=(16, 8))
-
-    # Set style
-    plt.style.use('default')
-    ax.set_facecolor('white')
-    fig.patch.set_facecolor('white')
-
-    # Different line styles and markers
-    line_styles = [
-        {'linestyle': '-', 'marker': 'o', 'markersize': 5},
-        {'linestyle': '--', 'marker': 's', 'markersize': 4},
-        {'linestyle': '-.', 'marker': '^', 'markersize': 5},
-        {'linestyle': ':', 'marker': 'D', 'markersize': 4},
-        {'linestyle': '-', 'marker': 'v', 'markersize': 5},
-    ]
-
-    # Plot data
-    style_idx = 0
+    fig = go.Figure()
+    
+    # Color palette - simple and clean
+    colors = ['#000000', '#666666', '#333333', '#999999', '#555555']
+    
+    # Line styles
+    line_styles = ['solid', 'dash', 'dashdot', 'dot']
+    
+    color_idx = 0
     for col in df.columns:
         if col != 'Date':
-            style = line_styles[style_idx % len(line_styles)]
-            ax.plot(df['Date'], df[col],
-                   color='black',
-                   linewidth=2,
-                   label=col,
-                   linestyle=style['linestyle'],
-                   marker=style['marker'],
-                   markersize=style['markersize'],
-                   markerfacecolor='white',
-                   markeredgecolor='black',
-                   markeredgewidth=1.5)
-            style_idx += 1
-
-    # Styling
-    ax.set_xlabel('Date', fontsize=20, color='black', fontweight='bold')
-    ax.set_ylabel('Values', fontsize=20, color='black', fontweight='bold')
-    ax.set_title('Weather Forecast', fontsize=16, color='black', fontweight='bold', pad=20)
-
-    # Remove grid and spines
-    ax.grid(False)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_color('black')
-    ax.spines['bottom'].set_color('black')
-    ax.spines['left'].set_linewidth(3)
-    ax.spines['bottom'].set_linewidth(3)
-
-    # Styling legend borders
-    if len(df.columns) > 2:
-        legend = ax.legend(
-            frameon=True,
-            loc='center left',
-            bbox_to_anchor=(1.02, 0.5),
-            fancybox=False,
-            shadow=False,
-            framealpha=1,
-            edgecolor='black'
-        )
-        legend.get_frame().set_facecolor('white')
-        legend.get_frame().set_linewidth(1)
-
-    # Rotate x-axis labels
-    plt.xticks(rotation=0, fontsize=10)
-    plt.yticks(fontsize=10)
-    plt.tight_layout()
-
+            line_style = line_styles[color_idx % len(line_styles)]
+            color = colors[color_idx % len(colors)]
+            
+            fig.add_trace(go.Scatter(
+                x=df['Date'],
+                y=df[col],
+                mode='lines+markers',
+                name=col,
+                line=dict(
+                    color=color,
+                    width=2,
+                    dash=line_style
+                ),
+                marker=dict(
+                    color='white',
+                    size=6,
+                    line=dict(
+                        color=color,
+                        width=2
+                    )
+                ),
+                hovertemplate='<b>%{fullData.name}</b><br>' +
+                              'Date: %{x}<br>' +
+                              'Value: %{y}<br>' +
+                              '<extra></extra>'
+            ))
+            color_idx += 1
+    
+    # Update layout - keep it simple and clean
+    fig.update_layout(
+        title={
+            'text': 'Weather Forecast',
+            'x': 0.5,
+            'xanchor': 'center',
+            'font': {'size': 16, 'color': 'black'}
+        },
+        xaxis_title='Date',
+        yaxis_title='Values',
+        plot_bgcolor='white',
+        paper_bgcolor='white',
+        font=dict(color='black'),
+        showlegend=True,
+        legend=dict(
+            bgcolor='white',
+            bordercolor='black',
+            borderwidth=1,
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            showgrid=False,
+            showline=True,
+            linewidth=2,
+            linecolor='black',
+            title_font=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            showgrid=False,
+            showline=True,
+            linewidth=2,
+            linecolor='black',
+            title_font=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        height=500
+    )
+    
     return fig
 
 # Main app
 def main():
-    st.title("Lab 2&3 ")
-    st.markdown("**Present by group []: Le Hung, Quang Minh and Manh Chung**")
+    st.title("EasyWeather")
+    st.subheader("**Present by group [3]: Le Hung, Quang Minh and Manh Chung**")
     # Input section
     st.header("Input Options")
     
@@ -228,7 +242,7 @@ def main():
         metrics = st.multiselect(
             "Select metrics to display:",
             ["Temperature", "Precipitation", "Wind"],
-            default=["Temperature", "Precipitation", "Wind"]
+            default=[]
         )
     
     # Fetch data button
@@ -268,11 +282,11 @@ def main():
                     st.header("Weather Forecast Data")
                     st.dataframe(df, use_container_width=True)
 
-                    # Display chart
+                    # Display interactive chart
                     st.header("Weather Forecast Chart")
-                    fig = create_line_chart(df, metrics)
+                    fig = create_interactive_chart(df, metrics)
                     if fig:
-                        st.pyplot(fig)
+                        st.plotly_chart(fig, use_container_width=True)
 
                     # Display location info
                     st.info(f"Location: {latitude:.4f}, {longitude:.4f}")
