@@ -6,8 +6,13 @@
   <img src="https://img.shields.io/badge/python-3.13-blue" alt="Python">
   <img src="https://img.shields.io/badge/Framework-Streamlit-orange" alt="Streamlit">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
-  <a href="https://ady201m-group3.streamlit.app/">
-    <img src="https://img.shields.io/badge/Open%20App-EasyWeather-brightgreen?style=for-the-badge&logo=streamlit" alt="Open App"/>
+</p>
+
+<p align="center">
+  <a href="https://share.streamlit.io/your-app-link">
+    <img src="https://img.shields.io/badge/Open%20App-EasyWeather-brightgreen?style=for-the-badge&logo=streamlit" 
+         alt="Open App"
+         style="transform: scale(1.5); margin-top: 15px;">
   </a>
 </p>
 

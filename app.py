@@ -79,7 +79,7 @@ def fetch_weather_data(latitude, longitude, metrics):
         # Regex URL
         base_url = "https://api.open-meteo.com/v1/forecast"
         
-        # Map metrics to API parameters
+        # Map metrics to API
         daily_params = []
         if "Temperature" in metrics:
             daily_params.extend(["temperature_2m_max", "temperature_2m_min"])
