@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 # Page config
 st.set_page_config(
-    page_title="Lab 2 - Open-Meteo Weather GUI",
+    page_title="Group 3",
     layout="wide"
 )
 
@@ -94,8 +94,11 @@ def fetch_weather_data(latitude, longitude, metrics):
             "longitude": longitude,
             "daily": ",".join(daily_params),
             "timezone": "auto",
-            "forecast_days": 7
+            "forecast_days": 7,
+            "wind_speed_unit": "kmh",
+            "precipitation_unit": "mm"
         }
+
         
         response = requests.get(base_url, params=params)
         response.raise_for_status()
@@ -139,45 +142,33 @@ def create_interactive_chart(df, metrics):
         return None
 
     fig = go.Figure()
-    
-    # Color palette - simple and clean
-    colors = ['#000000', '#666666', '#333333', '#999999', '#555555']
-    
-    # Line styles
-    line_styles = ['solid', 'dash', 'dashdot', 'dot']
-    
-    color_idx = 0
+
     for col in df.columns:
-        if col != 'Date':
-            line_style = line_styles[color_idx % len(line_styles)]
-            color = colors[color_idx % len(colors)]
-            
-            fig.add_trace(go.Scatter(
-                x=df['Date'],
-                y=df[col],
-                mode='lines+markers',
-                name=col,
-                line=dict(
-                    color=color,
-                    width=2,
-                    dash=line_style
-                ),
-                marker=dict(
-                    color='white',
-                    size=6,
-                    line=dict(
-                        color=color,
-                        width=2
-                    )
-                ),
-                hovertemplate='<b>%{fullData.name}</b><br>' +
-                              'Date: %{x}<br>' +
-                              'Value: %{y}<br>' +
-                              '<extra></extra>'
-            ))
-            color_idx += 1
+        fig.add_trace(go.Scatter(
+            x=df["Date"], y=df[col],
+            mode="lines+markers",
+            name=col,
+            line=dict(color="black", width=2),
+            marker=dict(size=6, color="white", line=dict(color="black", width=2))
+        ))
+
+    fig.update_layout(
+        template='none',
+        plot_bgcolor="white", paper_bgcolor="white",
+        font=dict(color="black"),
+        xaxis=dict(showgrid=False, showline=True, linewidth=2, linecolor="black",
+                tickfont=dict(color="black"), title_font=dict(color="black")),
+        yaxis=dict(showgrid=False, showline=True, linewidth=2, linecolor="black",
+                tickfont=dict(color="black"), title_font=dict(color="black")),
+        legend=dict(bgcolor="white", bordercolor="black", borderwidth=1,
+                    font=dict(color="black")),
+        hoverlabel=dict(bgcolor="white", bordercolor="black", font=dict(color="black")),
+        height=480,
+        title={"text": 'title', "x": 0.5, "xanchor": "center",
+            "font": {"size": 16, "color": "black"}}
+    )
     
-    # Update layout - keep it simple and clean
+    # Update layout 
     fig.update_layout(
         title={
             'text': 'Weather Forecast',
@@ -213,11 +204,76 @@ def create_interactive_chart(df, metrics):
             title_font=dict(color='black'),
             tickfont=dict(color='black')
         ),
+        hoverlabel=dict(
+            bgcolor="white",         # nền tooltip
+            bordercolor="black",     # viền tooltip
+            font=dict(color="black") # chữ tooltip
+        ),
         height=500
     )
+
+        
     
     return fig
+def render_metric_tabs(df, metrics):
+    """Render charts in separate tabs by metric group (no mixed units)."""
+    # Xác định nhóm cột theo metric
+    groups = {}
+    if "Temperature" in metrics:
+        groups["Temperature"] = [c for c in df.columns if c in ["Max Temp (°C)", "Min Temp (°C)"]]
+    if "Precipitation" in metrics:
+        groups["Precipitation"] = [c for c in df.columns if c == "Precipitation (mm)"]
+    if "Wind" in metrics:
+        groups["Wind"] = [c for c in df.columns if c == "Max Wind Speed (km/h)"]
 
+    # Lọc bỏ nhóm rỗng
+    groups = {k: v for k, v in groups.items() if v}
+
+    if not groups:
+        st.info("No metrics to display.")
+        return
+
+    tab_titles = list(groups.keys())
+    tabs = st.tabs(tab_titles)
+
+    for tab, title in zip(tabs, tab_titles):
+        with tab:
+            cols = groups[title]
+            # Vẽ 1 chart / tab 
+            fig = go.Figure()
+            for col in cols:
+                fig.add_trace(go.Scatter(
+                    x=df["Date"], y=df[col],
+                    mode="lines+markers",
+                    name=col,
+                    line=dict(width=2),
+                    marker=dict(size=6)
+                ))
+            # Nhãn trục Y theo nhóm
+            y_label = {
+                "Temperature": "Temperature (°C)",
+                "Precipitation": "Precipitation (mm)",
+                "Wind": "Wind speed (km/h)"
+            }.get(title, "Value")
+
+            fig.update_layout(
+                template = 'none',
+                title={"text": title, "x": 0.5, "xanchor": "center"},
+                xaxis_title="Date",
+                yaxis_title=y_label,
+                plot_bgcolor="white",
+                paper_bgcolor="white",
+                font=dict(color="black"),
+                showlegend=True,
+                xaxis=dict(showgrid=True, showline=True, linewidth=2, linecolor="black"),
+                yaxis=dict(showgrid=True, showline=True, linewidth=3, linecolor="gray"),
+                height=480
+            )
+            st.plotly_chart(fig, use_container_width=True)
+
+            # (Optional) hiển thị bảng con cho tab hiện tại
+            with st.expander("Show data"):
+                st.dataframe(df[["Date"] + cols], use_container_width=True)
 # Main app
 def main():
     st.title("EasyWeather")
@@ -283,14 +339,17 @@ def main():
                     st.dataframe(df, use_container_width=True)
 
                     # Display interactive chart
-                    st.header("Weather Forecast Chart")
-                    fig = create_interactive_chart(df, metrics)
-                    if fig:
-                        st.plotly_chart(fig, use_container_width=True)
+                    # Display charts by metric (separate tabs, no mixed units)
+                    st.header("Weather Forecast Charts")
+                    render_metric_tabs(df, metrics)
+
 
                     # Display location info
                     st.info(f"Location: {latitude:.4f}, {longitude:.4f}")
                     st.info(f"Timezone: {weather_data.get('timezone', 'Unknown')}")
 
+                    # Download CSV
+                    csv = df.to_csv(index=False).encode("utf-8")
+                    st.download_button("Download CSV", csv, "forecast.csv", "text/csv")
 if __name__ == "__main__":
     main()
