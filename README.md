@@ -20,9 +20,13 @@ https://ady201m-group3.streamlit.app/
 
 ## Project structure:
 .
+|
 ├── README.md   # mô tả dự án
+|
 ├── app.py  # entry point chính
+|
 ├── requirements.txt    # dependencies
+
 
 ## Techstack:
 - Python version: 3.13
