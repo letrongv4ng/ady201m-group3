@@ -1,18 +1,42 @@
-<!-- MANPAGE: BEGIN EXCLUDED SECTION -->  
-<div align = center>
+<!-- MANPAGE: BEGIN EXCLUDED SECTION -->
+<p align="center">
+  <img src="assets/logo.png" alt="EasyWeather" width="150"/>
+</p>
 
-[![EasyWeather](https://github.com/letrongv4ng/ady201m-group3/blob/main/assets/logo.png)](#readme)
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.13-blue" alt="Python">
+  <img src="https://img.shields.io/badge/Framework-Streamlit-orange" alt="Streamlit">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+<p align="center">
+  <a href="#introduction">Introduction</a> •
+  <a href="#feature">Features</a> •
+  <a href="#how-to-run">How&nbsp;to&nbsp;Run</a> •
+  <a href="#quick-access">Quick&nbsp;Access</a> •
+  <a href="#-project-structure">Project&nbsp;Structure</a> •
+  <a href="#demo">Demo</a> •
+  <a href="#techstack">Tech&nbsp;Stack</a> •
+  <a href="#flow-app">Flow&nbsp;App</a> •
+  <a href="#limitations">Limitations</a> •
+  <a href="#authors">Authors</a>
+</p>
 
-[![Python](https://img.shields.io/badge/python-3.13-blue)] 
-[![Streamlit](https://img.shields.io/badge/Framework-Streamlit-orange)]
-[![License](https://img.shields.io/badge/license-MIT-green)]
-
-</div>
+</p>
 <!-- MANPAGE: BEGIN EXCLUDED SECTION -->
 
+EW: EasyWeather là một web app dự báo thời tiết 7 ngày sử dụng Open-Meteo API, thực hiện bởi nhóm 3 môn ADY201m do thầy Hùng-BK phụ trách.
 
-# Introduction
-Web app dự báo thời tiết 7 ngày sử dụng Open-Meteo API, thực hiện bởi nhóm 3 môn ADY201m do thầy Hùng-BK phụ trách.
+# Table of Contents
+- [Introduction](#introduction)
+- [Features](#feature)
+- [How to Run](#how-to-run)
+- [Quick Access](#quick-access)
+- [Project Structure](#-project-structure)
+- [Demo](#demo)
+- [Tech Stack](#techstack)
+- [Flow App](#flow-app)
+- [Limitations](#limitations)
+- [Authors](#authors)
+
 
 ## Feature
 - Tra cứu thời tiết sử dụng API thực của "Open-Meteo".
@@ -31,7 +55,7 @@ pip install -r requirements.txt
 ``` python
 streamlit run app.py
 ```
-2. Quick access:
+## Quick access:
 https://ady201m-group3.streamlit.app/
 
  ## Project structure 
@@ -68,11 +92,11 @@ Biểu đồ dự báo của Hà Nội 7 ngày tới:
     - Độ ẩm
     - Tốc độ gió
 
-# Limitation
+## Limitations
 
 ## Do giới hạn thời gian, ứng dụng mới chỉ có thể sử dụng vị trí thành phố mặc định, chưa hỗ trợ tra cứu thông tin trong quá khứ và so sánh giữa các địa điểm.
 
-# Authors:
+## Authors:
 
 ## LAB 02 - ADY201m
 - Lê Quang Hưng: MSSV: HE201273
