@@ -36,13 +36,18 @@ EW: EasyWeather là một web app dự báo thời tiết 7 ngày sử dụng Op
 ## How to run
 ```bash
 git clone https://github.com/letrongv4ng/ady201m-group3
+>>
 cd ady201m-group3
+>>
 pip install -r requirements.txt
+>>
 streamlit run app.py
+>>
 ```
 
  ## Project structure 
  ``` 
+.
 ├── README.md
 ├── app.py
 ├── requirements.txt
@@ -53,7 +58,8 @@ streamlit run app.py
 ```
 
 ## Demo
-[Truy cập app online](https://ady201m-group3.streamlit.app/) để xem live demo app.
+**[Truy cập app online]**(https://ady201m-group3.streamlit.app/) để xem live demo app.
+
 Biểu đồ dự báo của Hà Nội 7 ngày tới:
 <p align="center">
   <img src="assets/chart.png" alt="Weather Chart Demo" width="750"/>
@@ -67,7 +73,7 @@ Biểu đồ dự báo của Hà Nội 7 ngày tới:
 ## Flow app:
 
 1. Người dùng nhập vào tên thành phố muốn tra cứu:
-- Tự động gọi API Open-Meteo Geocoding để tìm toạ độ và tên thành phố chuẩn.
+- Tự động gọi API **Open-Meteo Geocoding** để tìm toạ độ và tên thành phố chuẩn.
 - Ghép tên thành phố vào "city-name" trong đường link dẫn đến API.
 2. Dẫn API -> json raw
 - Trích xuất dữ liệu từ json raw.
@@ -104,8 +110,8 @@ Input nhiều city -> vẽ chart overlay hoặc chart grid.
 Hỗ trợ đa ngôn ngữ, chuyển đổi đơn vị.
 
 ## Authors:
-- Lê Quang Hưng - MSSV: HE201273 - Leader.
-    - Đảm nhiệm code logic chính là lên ý tưởng app flow.
+- Lê Quang Hưng - MSSV: HE201273 - **Leader**.
+    - Đảm nhiệm code logic chính và lên ý tưởng app flow.
 - Đinh Quang Minh: MSSV: HE201506
     - Polish UI, phụ trách viết streamlit.
 - Đỗ Mạnh Chung: MSSV: HE201350
