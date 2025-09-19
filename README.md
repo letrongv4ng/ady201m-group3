@@ -53,7 +53,7 @@ streamlit run app.py
 ├── requirements.txt
 └── assets/
     ├── logo.png
-    └── chart.png
+    └── demo.gif
 
 ```
 
@@ -62,7 +62,7 @@ streamlit run app.py
 
 Biểu đồ dự báo của Hà Nội 7 ngày tới:
 <p align="center">
-  <img src="assets/chart.png" alt="Weather Chart Demo" width="750"/>
+  <img src="assets/demo.gif" alt="Weather Chart Demo" width="750"/>
 </p>
 
 ## Techstack:
